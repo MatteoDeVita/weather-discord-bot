@@ -12,4 +12,9 @@ client.on('message', msg => {
   }
 })
 
+client.on('message', msg => {
+    if (msg.content === 'github')
+        msg.reply('https://github.com/Mattness8')
+})
+
 client.login(process.env.BOT_TOKEN)
