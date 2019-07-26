@@ -16,7 +16,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
     if (msg.content.toLowerCase() === 'github')
-        msg.reply('https://github.com/Mattness8')
+        msg.reply('https://github.com/Mattness8');
 })
 
 client.on('message', message => {
@@ -27,12 +27,13 @@ client.on('message', message => {
 			return FAILURE;
 		}
 		if (!mentioned_user.kickable) {
-			message.reply(`I don't have the permissions to use this user`);
+			message.reply(`I don't have the permissions to kick this user`);
 			return FAILURE;
 		}
 		mentioned_user.kick()
 		.then(() => message.reply(`${mentioned_user.user.tag} has been kicked. ciao !`))
-    	.catch(error => message.reply(`I couldn't kick this user, sorry. (error code : ${error})`))
+		.catch(error => message.reply(`I couldn't kick this user, sorry. (error code : ${error})`))
+		return SUCCESS;
 	}
 })
 
