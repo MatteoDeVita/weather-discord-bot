@@ -4,6 +4,10 @@ const client = new Discord.Client();
 
 const {SUCCESS, FAILURE, BOT_TOKEN} = process.env;
 
+var getConfirmation = () => {
+	client.on('message', answer => answer.content === 'YES');
+}
+
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 })
@@ -30,10 +34,30 @@ client.on('message', message => {
 			message.reply(`I don't have the permissions to kick this user`);
 			return FAILURE;
 		}
-		mentioned_user.kick()
-		.then(() => message.reply(`${mentioned_user.user.tag} has been kicked. ciao !`))
-		.catch(error => message.reply(`I couldn't kick this user, sorry. (error code : ${error})`))
-		return SUCCESS;
+		message.reply(`Do you really want to kick ${mentioned_user.user.tag} ? (Answer with "YES")`);
+		const collector = new Discord.MessageCollector(
+			message.channel,
+			answer => answer.author.id === message.author.id,
+			{max: 1, time: 10000}
+		);
+		collector.on('collect', collector_answer => {
+			while (collector_answer.content != 'YES' && collector_answer.content != 'NO') {
+				if (collector_answer.content === 'YES') {
+					mentioned_user.kick()
+					.then(() => message.reply(`${mentioned_user.user.tag} has been kicked. ciao !`))
+					.catch(error => message.reply(`I couldn't kick this user, sorry. (error code : ${error})`))
+					return SUCCESS;
+				}
+				else if (collector_answer === 'NO') {
+					message.reply('OK, mission aborted !');
+					return FAILURE;
+				}
+				else {
+					message.reply('This is not a good answer, please answer with "YES" or "NO"');
+				}
+			}
+		})
+		return FAILURE;
 	}
 })
 
