@@ -35,20 +35,21 @@ client.on('message', message => {
 			return FAILURE;
 		}
 		message.reply(`Do you really want to kick ${mentioned_user.user.tag} ? (Answer with "YES" or "NO")`);
-		const collector = new Discord.MessageCollector(
-			message.channel,
+		const collector = message.channel.createCollector(
 			answer => answer.author.id === message.author.id,
-			{max: 5, time: 60000}
-		);
+			{max : 5, time : 60000}
+		)
 		collector.on('collect', collector_answer => {
 			if (collector_answer.content === 'YES') {
 				mentioned_user.kick()
 				.then(() => message.reply(`${mentioned_user.user.tag} has been kicked. ciao !`))
 				.catch(error => message.reply(`I couldn't kick this user, sorry. (error code : ${error})`))
+				collector.stop()
 				return SUCCESS;
 			}
 			else if (collector_answer.content === 'NO') {
 				message.reply('OK, mission aborted !');
+				collector.stop('No kick');
 				return FAILURE;
 			}
 			else {
