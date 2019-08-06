@@ -64,7 +64,13 @@ client.on('message', message => {
 		fs.readFile('./ressources/commands.JSON', (err, data) => {
 			const commands = JSON.parse(data.toString())
 			message.reply(` the commands are :\n${commands}`)
-			console.log(commands.administration);
+			// console.log(commands.administration);
+			// console.log(`${JSON.stringify(commands)}`)
+			// for (let i in commands) {			
+			// 		message.reply(`${JSON.stringify(i)}`)				
+			// 	//console.log(commands[i])
+			// 	//message.reply(`${i}`)
+			// }
 		})
 	}
 })
