@@ -1,6 +1,7 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require('fs')
 
 const {SUCCESS, FAILURE, BOT_TOKEN} = process.env;
 
@@ -58,6 +59,15 @@ client.on('message', message => {
 		})
 		return process.env.FAILURE;
 	}
+
+	if (message.content.toLocaleLowerCase() === '##help') { //need also fs
+		fs.readFile('./ressources/commands.JSON', (err, data) => {
+			const commands = JSON.parse(data.toString())
+			message.reply(` the commands are :\n${commands}`)
+			console.log(commands.administration);
+		})
+	}
 })
+
 
 client.login(process.env.BOT_TOKEN);
