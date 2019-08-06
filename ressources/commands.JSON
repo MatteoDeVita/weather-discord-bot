@@ -1,0 +1,11 @@
+{
+    "administration": {
+        "##kick": "kick the mentionned user"
+    },
+    "utilities": {
+        "github": "link to my github"
+    },
+    "others": {
+        "hello": "hello world !"
+    }
+}
