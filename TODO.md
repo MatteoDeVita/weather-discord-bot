@@ -5,8 +5,8 @@ Todo list for my discord bot
 ## next mendatory tasks
 - [x] kick feature __(2)__
 - [x] Ask if the user really wants to kick someone (ex : 'do you really want to kick user#0000 ?') __(7)__
-- [ ] update README.md with more info **(bot token in .env)** and github link __(1)__
-- [ ] deploy the bot on heroku
+- [x] update README.md with more info **(bot token in .env)** and github link __(1)__
+- [x] deploy the bot on heroku
 - [ ] **Add JSON file with all comands so the bot will be able to read and output all the commands** __(9)__
 - [ ] deploy the bot on heroku
 - [ ] add **gitHub API** in order to send a notification each time there is a pull request on one of my github repo __(10)__
