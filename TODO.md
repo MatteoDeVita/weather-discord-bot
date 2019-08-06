@@ -8,7 +8,7 @@ Todo list for my discord bot
 - [x] update README.md with more info **(bot token in .env)** and github link __(1)__
 - [x] deploy the bot on heroku
 - [ ] **Add JSON file with all comands so the bot will be able to read and output all the commands** __(9)__
-- [ ] deploy the bot on heroku
+- [ ] unit testing
 - [ ] add **gitHub API** in order to send a notification each time there is a pull request on one of my github repo __(10)__
 - [ ] import my own modules from './src __if needed__ __(2)__
 - [ ] Update bot icon and description **(status ?)** __(8)__
