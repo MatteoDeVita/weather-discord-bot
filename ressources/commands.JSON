@@ -3,6 +3,7 @@
         "##kick": "kick the mentionned user"
     },
     "utilities": {
+        "##help": "show all available commands",
         "github": "link to my github"
     },
     "others": {

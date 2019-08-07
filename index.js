@@ -63,55 +63,24 @@ client.on('message', message => {
 	if (message.content.toLocaleLowerCase() === '##help') { //need also fs
 		fs.readFile('./ressources/commands.JSON', (err, data) => {
 			const commands = JSON.parse(data.toString())
-			message.reply(` the commands are :\n${commands}`)
+
+			let embedMessage = new Discord.RichEmbed()
+				.setColor('#77318c')
+				.setTitle('The available commands are : ')
 			const categories = Object.keys(commands);
+			let commandsStr = undefined
 			for (let currentCategorie of categories) {
-				message.channel.send(`${currentCategorie}`)
-				console.log(currentCategorie)
+				console.log(currentCategorie)				
 				const currentCommands = Object.keys(commands[currentCategorie])
+				commandsStr = ''
 				for (let currentCommand of currentCommands) {
 					console.log(`	${currentCommand}: ${commands[currentCategorie][currentCommand]}`)
-					message.channel.send(`\t\`${currentCommand}\`: ${commands[currentCategorie][currentCommand]}`)
+					commandsStr += `\`${currentCommand}\`: ${commands[currentCategorie][currentCommand]}\n`
 				}
-					//console.log(currentCommand)
-					//console.log(commands[currentCategorie][currentCommand])
+				embedMessage.addField(currentCategorie, commandsStr)
 			}
-			// console.log(`categories = ${categories}`);
-			// console.log(`${JSON.stringify(commands.administration)}`)
-			// for (let i in commands) {			
-			// 		message.reply(`${JSON.stringify(i)}`)				
-			// 	//console.log(commands[i])
-			// 	//message.reply(`${i}`)
-			// }
-			// message.channel.send({embed: {
-			// 	color: 3447003,
-			// 	author: {
-			// 	  name: client.user.username,
-			// 	  icon_url: client.user.avatarURL
-			// 	},
-			// 	title: "This is an embed",
-			// 	url: "http://google.com",
-			// 	description: "This is a test embed\nto showcase what they look like and what they can do.",
-			// 	fields: [{
-			// 		name: "Fields",
-			// 		value: "They can have different fields with small headlines."
-			// 	  },
-			// 	  {
-			// 		name: "Masked links",
-			// 		value: "You can put [masked links](http://google.com) inside of rich embeds."
-			// 	  },
-			// 	  {
-			// 		name: "Markdown",
-			// 		value: "You can put all the *usual* **__Markdown__** inside of them."
-			// 	  }
-			// 	],
-			// 	timestamp: new Date(),
-			// 	footer: {
-			// 	  icon_url: client.user.avatarURL,
-			// 	  text: "© Example"
-			// 	}
-			//   }
-			// });
+			message.channel.send(embedMessage)
+			console.log(client.user.avatarURL)		
 		})
 	}
 })
