@@ -14,13 +14,13 @@ client.on('ready', () => {
 })
 
 client.on('message', msg => {
-	if (msg.content.toLowerCase() === 'hello') {
+	if (msg.content.toLowerCase() === '##hello') {
     	msg.reply('hello world!');
   	}
 })
 
 client.on('message', msg => {
-    if (msg.content.toLowerCase() === 'github')
+    if (msg.content.toLowerCase() === '##github')
         msg.reply('https://github.com/Mattness8');
 })
 
@@ -60,30 +60,26 @@ client.on('message', message => {
 		return process.env.FAILURE;
 	}
 
-	if (message.content.toLocaleLowerCase() === '##help') { //need also fs
+	if (message.content.toLocaleLowerCase() === '##help') {
 		fs.readFile('./ressources/commands.JSON', (err, data) => {
 			const commands = JSON.parse(data.toString())
-
 			let embedMessage = new Discord.RichEmbed()
 				.setColor('#77318c')
 				.setTitle('The available commands are : ')
+				.setThumbnail('https://cdn.discordapp.com/avatars/603902050933276673/0ea81578034da02f24faf41172a7ae1a.png?size=2048')
 			const categories = Object.keys(commands);
-			let commandsStr = undefined
 			for (let currentCategorie of categories) {
-				console.log(currentCategorie)				
 				const currentCommands = Object.keys(commands[currentCategorie])
-				commandsStr = ''
+				let commandsStr = ''
 				for (let currentCommand of currentCommands) {
-					console.log(`	${currentCommand}: ${commands[currentCategorie][currentCommand]}`)
-					commandsStr += `\`${currentCommand}\`: ${commands[currentCategorie][currentCommand]}\n`
+					commandsStr +=`\`${currentCommand}\` : ${commands[currentCategorie][currentCommand]}\n`
 				}
 				embedMessage.addField(currentCategorie, commandsStr)
 			}
 			message.channel.send(embedMessage)
-			console.log(client.user.avatarURL)		
 		})
+
 	}
 })
-
 
 client.login(process.env.BOT_TOKEN);
