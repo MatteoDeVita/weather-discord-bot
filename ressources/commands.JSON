@@ -4,9 +4,9 @@
     },
     "utilities": {
         "##help": "show all available commands",
-        "github": "link to my github"
+        "##github": "link to my github"
     },
     "others": {
-        "hello": "hello world !"
+        "##hello": "hello world !"
     }
 }
