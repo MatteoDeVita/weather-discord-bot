@@ -8,3 +8,4 @@ This bot is deployed on heroku
 * BOT_TOKEN=[Your discord bot token] ##you can get your discord bot token here : https://discordapp.com/developers/applications/
 * SUCCESS=TRUE
 * FAILURE=false
+* OPEN_WEATHER_API_KEY=[Your OpenWeather API key] ##if you want an access to the weather command, you need an access to the OpenWeather API granted by an API key, see: https://openweathermap.org/api
