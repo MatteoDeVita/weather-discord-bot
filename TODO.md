@@ -7,8 +7,10 @@ Todo list for my discord bot
 - [x] Ask if the user really wants to kick someone (ex : 'do you really want to kick user#0000 ?') __(7)__
 - [x] update README.md with more info **(bot token in .env)** and github link __(1)__
 - [x] deploy the bot on heroku
-- [ ] **Add JSON file with all comands so the bot will be able to read and output all the commands** __(10)__ with an embed message
-- [ ] reorganize code structure (group functions into src/${categorie} folders)
+- [x] **Add JSON file with all comands so the bot will be able to read and output all the commands** __(10)__ with an embed message
+- [x] reorganize code structure (group functions into src/${categorie} folders)
+- [ ] command giving weather(9)
+- [ ] command giving food orders (7)
 - [ ] then write errors in a log file
 - [ ] Add message when bot is disconnected (often for a dev purpose)
 - [ ] unit testing
