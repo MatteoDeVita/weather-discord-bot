@@ -9,7 +9,7 @@ const weather = require('./src/utilities/weather')
 
 const {SUCCESS, FAILURE, BOT_TOKEN} = process.env;
 
-client.on ('message', message => {
+client.on ('message', async message => {
     switch (message.content.toLowerCase()) {
         case '##github':
             github(message)
@@ -24,9 +24,13 @@ client.on ('message', message => {
             if (message.content.toLocaleLowerCase().startsWith('##kick '))
                 kick(message)
             else if (message.content.toLocaleLowerCase().startsWith('##weather'))
-                weather(message)
+                try {
+                    await weather.getCurrentWeather(message)
+                }
+                catch (error) {
+                    throw error
+                }
                 break;
-            break;
     }
 })
 
