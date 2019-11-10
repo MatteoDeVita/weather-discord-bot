@@ -1,6 +1,4 @@
-
-const windDirections =
-[
+const WIND_DIRECTIONS = [
     {min: 348.75, max: 11.25, value: 'N'},
     {min: 11.25, max: 33.75, value: 'NNE'},
     {min: 33.75, max: 56.25, value: 'NE'},
@@ -19,4 +17,6 @@ const windDirections =
     {min: 326.25, max: 348.75, value: 'NNW'},
 ]
 
-module.exports = windDirections;
+module.exports = {
+    WIND_DIRECTIONS,
+}
