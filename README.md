@@ -1,4 +1,4 @@
-# Mattness_discord_bot
+# my_discord_bot
 My discord bot
 I will upload new features soon
 here's my github : https://github.com/Mattness8
