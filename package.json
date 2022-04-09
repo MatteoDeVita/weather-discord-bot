@@ -23,7 +23,7 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.0.0",
     "es6-promise": "^4.2.8",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0",
     "request": "2.88.0"
